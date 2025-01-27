@@ -5,14 +5,17 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
+import { Appearance } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const colorScheme = Appearance.getColorScheme();
+
+  const theme = colorScheme== 'dark' ? Colors.dark : Colors.light;
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
@@ -28,15 +31,15 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
-        {/* <Stack.Screen name="(coffee)" options={{ headerShown: false }} /> */}
+      
+      <Stack screenOptions={{headerStyle : {backgroundColor: theme.headerBackground}, headerTintColor : theme.text, headerShadowVisible: false}}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="contact" options={ {title : "Contact Us", headerTitle:'Coffee shop menu' , headerShown: true }} />
+        <Stack.Screen name="menu" options={ {title : "Menu", headerTitle:'Contact Us' , headerShown: true }} />
         <Stack.Screen name="index" options={ {title : "Home" , headerShown: false}} />
-        <Stack.Screen name="contact" options={ {title : "Contact Us"}} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="+not-found" options={{headerShown : false}}/>
+        <StatusBar style="auto" />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    
   );
 }
