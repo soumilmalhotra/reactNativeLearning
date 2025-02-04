@@ -17,10 +17,16 @@ const app = () => {
         style={styles.image}
         resizeMode="cover"
       >
-        <Text style={styles.title}>coffee shop</Text>
+      <Text style={styles.title}>coffee shop</Text>
+        
         <Link href="/contact" style={{marginHorizontal: 'auto'}} asChild>
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText }>contact us</Text>
+            <Text style={styles.buttonText }>Contact Us</Text>
+          </Pressable>
+        </Link>
+        <Link href="/menu" style={{marginHorizontal: 'auto'}} asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText }>Menu</Text>
           </Pressable>
         </Link>
         

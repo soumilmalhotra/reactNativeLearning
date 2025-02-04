@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
    return (
      <View style={styles.container}>
    
-         <Text style={styles.title}>Contact Us</Text>
+         <Text style={styles.title}>Contact Us 9312030120</Text>
    
      </View>
    );
