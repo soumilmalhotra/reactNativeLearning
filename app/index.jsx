@@ -8,7 +8,7 @@ import {
 import React from "react";
 import icedCoffeeImg from "@/assets/images/iced-coffee.png";
 import { Link } from "expo-router";
-import { HelloWave } from "@/components/HelloWave";
+
 const app = () => {
   return (
     <View style={styles.container}>
